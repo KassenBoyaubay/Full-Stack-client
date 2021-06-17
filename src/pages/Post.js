@@ -18,17 +18,17 @@ function Post() {
     const { authState } = useContext(AuthContext)
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
+        axios.get(`https://full-stack-api-kas.herokuapp.com/posts/byId/${id}`).then((response) => {
             setPostObject(response.data)
         })
 
-        axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
+        axios.get(`https://full-stack-api-kas.herokuapp.com/comments/${id}`).then((response) => {
             setComments(response.data)
         })
     }, [id])
 
     const addComment = () => {
-        axios.post("http://localhost:3001/comments",
+        axios.post("https://full-stack-api-kas.herokuapp.com/comments",
             { commentBody: newComment, PostId: id },
             {
                 headers: {                                              // headers for validation token
@@ -45,7 +45,7 @@ function Post() {
     }
 
     const deleteComment = (id) => {
-        axios.delete(`http://localhost:3001/comments/${id}`,
+        axios.delete(`https://full-stack-api-kas.herokuapp.com/comments/${id}`,
             {
                 headers: {                                              // headers for validation token          
                     accessToken: localStorage.getItem("accessToken")
@@ -58,7 +58,7 @@ function Post() {
     }
 
     const deletePost = (id) => {
-        axios.delete(`http://localhost:3001/posts/${id}`,
+        axios.delete(`https://full-stack-api-kas.herokuapp.com/posts/${id}`,
             {
                 headers: {                                              // headers for validation token          
                     accessToken: localStorage.getItem("accessToken")
@@ -71,7 +71,7 @@ function Post() {
     const editPost = (option) => {
         if (option === "title") {
             let newTitle = prompt("Enter New Title:")   // like alert
-            axios.put("http://localhost:3001/posts/title",
+            axios.put("https://full-stack-api-kas.herokuapp.com/posts/title",
                 {
                     newTitle: newTitle,
                     id: id
@@ -85,7 +85,7 @@ function Post() {
                 })
         } else {
             let newPostText = prompt("Enter New Text:")
-            axios.put("http://localhost:3001/posts/postText",
+            axios.put("https://full-stack-api-kas.herokuapp.com/posts/postText",
                 {
                     newText: newPostText,
                     id: id

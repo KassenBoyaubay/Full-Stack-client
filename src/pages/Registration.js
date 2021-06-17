@@ -18,7 +18,7 @@ function Registration() {
     }
 
     const onSubmit = (data) => {
-        axios.post("http://localhost:3001/auth", data).then((response) => {
+        axios.post("https://full-stack-api-kas.herokuapp.com/auth", data).then((response) => {
             localStorage.setItem("accessToken", response.data.token)
             setAuthState({ username: response.data.username, id: response.data.id, status: true })
             history.push('/')

@@ -19,7 +19,7 @@ function Home() {
             history.push("/login")
         } else {
             const getPosts = () => {
-                axios.get("http://localhost:3001/posts",
+                axios.get("https://full-stack-api-kas.herokuapp.com/posts",
                     { headers: { accessToken: localStorage.getItem("accessToken") } }).then((response) => {
                         setListOfPosts(response.data.listOfPosts)
                         setLikedPosts(response.data.likedPosts.map((like) => {
@@ -39,7 +39,7 @@ function Home() {
     }, [])
 
     const LikePost = (postId) => {
-        axios.post("http://localhost:3001/likes",
+        axios.post("https://full-stack-api-kas.herokuapp.com/likes",
             { PostId: postId },
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then((response) => {

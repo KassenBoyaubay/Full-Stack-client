@@ -17,7 +17,7 @@ function App() {
   const [authState, setAuthState] = useState({ username: '', id: 0, status: false })
 
   useEffect(() => {
-    axios.get('http://localhost:3001/auth/validate', {
+    axios.get('https://full-stack-api-kas.herokuapp.com/auth/validate', {
       headers: {
         accessToken: localStorage.getItem('accessToken')
       }
